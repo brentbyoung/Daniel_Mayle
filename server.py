@@ -21,6 +21,8 @@ def process_money():
 	except KeyError:
 		session['activities'] = []
 
+	#This looks good, works properly!
+
 	if request.form['building'] == 'farm':
 		gold = random.randrange(10,21)
 	elif request.form['building'] == 'cave':
@@ -30,17 +32,19 @@ def process_money():
 	elif request.form['building'] == 'casino':
 		gold = random.randrange(-50,51)
 
+	#very clean!
+
 	activity = ''
 	time = datetime.now().strftime('%Y/%m/%d %I:%M %p')
 	if gold >= 0:
 		activity += 'Earned ' + str(gold) + ' golds from the ' + str(request.form['building'])
 	else:
-		activity += 'Entered a casino and lost ' + str(gold) + ' golds... Ouch...' 
-	
+		activity += 'Entered a casino and lost ' + str(abs(gold)) + ' golds... Ouch...'
+
 	activity += '! (' + str(time) + ')'
 	session['gold'] += gold
 	session['activities'].insert(0, activity)
-	return redirect(url_for('index'))
+	return redirect(url_for('index')) #good redirection. I don't usually see people using url_for, very nice!
 
 @app.route('/reset')
 def reset():
@@ -49,3 +53,5 @@ def reset():
 	return redirect(url_for('index'))
 
 app.run(debug=True)
+
+#This works well. The styling isn't working for me; you didn't include your style.css in the repo. But everything else looks great! Keep it up!

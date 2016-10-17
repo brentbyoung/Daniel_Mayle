@@ -3,15 +3,15 @@
 <head>
   <title>Ninja Gold</title>
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
   <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> -->
 
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
   <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"> -->
 </head>
 <body>
   <div id="container">
@@ -22,7 +22,7 @@
     <form action="/process_money" method="post">
     <input type="hidden" name="building" value="farm" />
     <input type="submit" value="Find Gold!"/>
-    </form> 
+    </form>
   </div>
   <div id="Cave">
     <h1>Cave</h1>
@@ -30,7 +30,7 @@
     <form action="/process_money" method="post">
     <input type="hidden" name="building" value="cave" />
     <input type="submit" value="Find Gold!"/>
-    </form> 
+    </form>
   </div>
   <div id="House">
     <h1>House</h1>
@@ -38,7 +38,7 @@
     <form action="/process_money" method="post">
     <input type="hidden" name="building" value="house" />
     <input type="submit" value="Find Gold!"/>
-    </form> 
+    </form>
   </div>
   <div id="Casino">
     <h1>Casino</h1>
@@ -46,7 +46,7 @@
     <form action="/process_money" method="post">
     <input type="hidden" name="building" value="casino" />
     <input type="submit" value="Find Gold!"/>
-    </form> 
+    </form>
   </div>
 
   <div class='row'>
@@ -69,7 +69,7 @@
     </div>
 
  </div>  <!--end of container-->
-    
+
 
 
 </body>
