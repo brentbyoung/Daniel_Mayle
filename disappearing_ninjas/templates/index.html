@@ -1,0 +1,106 @@
+<<<<<<< HEAD
+<!doctype html>
+<html>
+<head>
+    <title>Ninjas</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    {% if allNinjas == True %}
+       <img src="{{ url_for('static', filename='img/TMNT.jpg')}}">
+    {% endif %}
+    {% if allNinjas == False %}
+    {% if color == 'blue' %}
+        <img src="{{ url_for('static', filename='img/Leo.jpeg') }}">
+    {% elif color == 'orange' %}
+        <img src="{{ url_for('static', filename='img/mikey.jpg') }}">
+    {% elif color == 'red' %}
+        <img src="{{ url_for('static', filename='img/raph.png') }}">
+     {% elif color == 'purple' %}
+        <img src="{{ url_for('static', filename='img/donnie.gif') }}">
+    {% else %}
+        <img src="{{ url_for('static', filename='img/april.png') }}">
+    {% endif %}
+{% endif %}
+</body>
+</html>
+
+
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Ninja Gold</title>
+  <!-- Latest compiled and minified CSS -->
+
+  <!-- Optional theme -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> -->
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
+  <!-- Latest compiled and minified JavaScript -->
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"> -->
+</head>
+<body>
+  <div id="container">
+  <h1>Welcome to Ninja Gold!</h1>
+  <div id="Farm">
+    <h1>Farm</h1>
+    <h3>(Earn 10-20 gold pieces)</h3>
+    <form action="/process_money" method="post">
+    <input type="hidden" name="building" value="farm" />
+    <input type="submit" value="Find Gold!"/>
+    </form>
+  </div>
+  <div id="Cave">
+    <h1>Cave</h1>
+    <h3>(Earn 5-10 gold pieces)</h3>
+    <form action="/process_money" method="post">
+    <input type="hidden" name="building" value="cave" />
+    <input type="submit" value="Find Gold!"/>
+    </form>
+  </div>
+  <div id="House">
+    <h1>House</h1>
+    <h3>(Earn 2-5 gold pieces)</h3>
+    <form action="/process_money" method="post">
+    <input type="hidden" name="building" value="house" />
+    <input type="submit" value="Find Gold!"/>
+    </form>
+  </div>
+  <div id="Casino">
+    <h1>Casino</h1>
+    <h3>(Earnsor lose 0-50 gold pieces)</h3>
+    <form action="/process_money" method="post">
+    <input type="hidden" name="building" value="casino" />
+    <input type="submit" value="Find Gold!"/>
+    </form>
+  </div>
+
+  <div class='row'>
+      <h4>Activities:</h4>
+      <div id='activities'>
+        {% if session['activities'] %}
+          {% for activity in session['activities'] %}
+            {% if 'Earned' not in activity %}
+              <p class='lose'>{{ activity }}</p>
+            {% else %}
+              <p class='win'>{{ activity }}</p>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div> <!--end of row-->
+  </div> <!--end of activites-->
+
+  <div class='row text-center'>
+      <a href="/reset" class='btn btn-primary'>Replay</a>
+    </div>
+
+ </div>  <!--end of container-->
+
+
+
+</body>
+</html>
+>>>>>>> c50fa33cbb5461055345719981d5f49161cfd581
