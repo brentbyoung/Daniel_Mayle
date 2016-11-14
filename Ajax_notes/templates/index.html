@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+
+    <title>Ajax Notes</title>
+
+    <link rel='stylesheet' type='text/css' href='css/styles.css' />
+
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous">
+
+    </script>
+
+    <script type="text/javascript">
+	$(document).ready(function(){
+	console.log("jQuery activated"); 
+	  
+	  $.ajax({  //31:30 of video for explanation Add and Delete functionality works here
+	    method: 'get', 
+	    url: '/notes', 
+	    dataType: 'html',
+	    sucess: function (res) {
+	  	  $('#notes').html(res);
+	    }
+	  })
+
+	  $('body').on('submit', 'form', function(){
+	    
+	    $.post($(this).attr('action'), $(this).serialize(), function(res){ $('#notes').html(res); }, 'html');
+	    $(this).find('input [type="text"]').val("");
+	    
+	    // $.ajax({                AJAX version
+	    // 	method:'post',
+	    // 	url: $(this).attr('action'),
+	    // 	data: $(this).serialize(),
+	    // 	dataType:'html',
+	    // 	sucess: function(res){
+	    // 		$('#notes').html(res);
+	    // 	}
+	    // });
+
+	    return false
+
+	  })
+	
+    })
+    </script>
+</head>
+<body>
+	<h1>Ajax Notes</h1>
+	<!-- Our form for creating new posts.-->
+    <hr>
+    <div id="notes">
+    	<!-- {% for note in notes %}
+    	<div>
+	    	<h5>{{note.title}}</h5>
+	    	<textarea>{{note.description}}</textarea>
+    	</div>
+    	{% endfor%} -->
+    </div>  <!-- end of notes-->
+    <form action="/notes/create" method="post">
+    	<input type="text" name= "title">
+    	<input type="submit" value="Add Note"> 
+</body>
+</html>
