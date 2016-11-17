@@ -21,8 +21,8 @@
 
           
 
-          $.post('/posts/create', $(this).serialize(), function(res) {
-        $('#posts').html(res);
+          $.post('/wall/create', $(this).serialize(), function(res) {
+        $('#messages').html(res);
        
          });
 
