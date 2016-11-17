@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+
+    <title>The Wall</title>
+
+    <link rel='stylesheet' type='text/css' href='css/styles.css' />
+
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous">
+
+    </script>
+
+      <script type="text/javascript">
+  $(document).ready(function(){
+
+        console.log("jQuery activated");
+
+        $('form').submit(function(){
+
+          
+
+          $.post('/posts/create', $(this).serialize(), function(res) {
+        $('#posts').html(res);
+       
+         });
+
+          console.log( $(this).serialize() );
+
+          return false;
+
+        });
+
+      });
+        
+    </script>
+<body>
+  <h1>My Wall of Posts</h1>
+  <!-- Our form for creating new posts.-->
+    <hr>
+    <h1>Welcome {{ session['user']['first_name'] }}</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <p><a href="/logout">Logout</a></p>
+    
+    
+    <h2>Post A Message</h2>
+    <form action="/wall/create" method="post">
+      <!-- <input type="text" name= "title"> -->
+       <textarea name="message"></textarea>
+      <input type="submit" value="Post Message"> 
+
+      <h2>Post A Comment</h2>
+    <form action="/wall/create" method="post">
+      <!-- <input type="text" name= "title"> -->
+       <textarea name="comment"></textarea>
+      <input type="submit" value="Post Comment"> 
+      
+      <div id="messages">
+      
+      </div>  
+</body>
+</html>
