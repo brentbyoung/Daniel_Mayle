@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Email Validation</title>
+</head>
+<body>
+  {% for error in request.session.errors %}
+    <p>{{error}}</p>
+  {% endfor %}
+  <form action="/emails" method="post">
+    {% csrf_token %}
+    <h1>Email Address: <input type="text" name="email"></h1>
+    <p><input type="submit" value="Submit"></p>
+  </form>
+</body>
+</html>
